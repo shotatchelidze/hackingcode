@@ -5,7 +5,7 @@
 
 <h1>Create Users</h1>
 
-{!! Form::open(['method' => 'POST', 'action' => 'AdminUsersController@store']) !!}
+{!! Form::open(['method' => 'POST', 'action' => 'AdminUsersController@store', 'files' => true]) !!}
 <div class="form-group">
     {!! Form::label('name', 'Name') !!}
     {!! Form::text('name', null, ['class' => 'form-control']) !!}
@@ -22,8 +22,13 @@
 </div>
 
 <div class="form-group">
-    {!! Form::label('status', 'Status') !!}
-    {!! Form::select('status', array(1 => 'Active', 0 => 'Not Active'), 0, ['class' => 'form-control']) !!}
+    {!! Form::label('is_active', 'Status') !!}
+    {!! Form::select('is_active', array(1 => 'Active', 0 => 'Not Active'), 0, ['class' => 'form-control']) !!}
+</div>
+
+<div class="form-group">
+    {!! Form::label('photo_id', 'Photo') !!}
+    {!! Form::file('photo_id', null, ['class' => 'form-control']) !!}
 </div>
 
 <div class="form-group">
