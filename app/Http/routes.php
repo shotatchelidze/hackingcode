@@ -1,5 +1,8 @@
 <?php
 
+
+
+
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -17,7 +20,9 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+
 Route::auth();
+
 
 Route::get('/home', 'HomeController@index');
 
@@ -25,9 +30,11 @@ Route::get('/post/{id}', ['as' => 'home.post', 'uses' => 'AdminPostsController@p
 
 Route::group(['middleware' => 'admin'], function(){
 
+    
     Route::get('/admin', function(){
         return view('admin.index');
     });
+    
 
     Route::resource('admin/users', 'AdminUsersController');
 
@@ -45,3 +52,8 @@ Route::group(['middleware' => 'admin'], function(){
 
 
 // Route::resource('admin/users', 'AdminUsersController');
+
+
+Route::group(['middleware' => 'auth'], function(){
+    Route::post('comment/reply', 'CommentRepliesController@createReply');
+});

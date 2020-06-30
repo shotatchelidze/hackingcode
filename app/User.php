@@ -2,6 +2,8 @@
 
 namespace App;
 
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Request;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 
 class User extends Authenticatable
@@ -13,6 +15,7 @@ class User extends Authenticatable
      */
     protected $fillable = [
         'name', 'email', 'password', 'role_id','photo_id','is_active',
+        
     ];
 
     /**
@@ -22,7 +25,10 @@ class User extends Authenticatable
      */
     protected $hidden = [
         'password', 'remember_token',
+        
     ];
+
+
 
     public function role(){
         return $this->belongsTo('App\Role');
@@ -31,12 +37,14 @@ class User extends Authenticatable
     public function photo(){
         return $this->belongsTo('App\Photo');
     }
+    ////// radgan auth klass aqvs tavisi hash seed methodshi xdeba orjer daheshva da amitom aris gakomentarebuli
+    // public function setPasswordAttribute($password){
+    //     if(!empty($password)){
+    //         $this->attributes['password'] = bcrypt($password);
+    //     }
+    // }
 
-    public function setPasswordAttribute($password){
-        if(!empty($password)){
-            $this->attributes['password'] = bcrypt($password);
-        }
-    }
+
 
     public function isAdmin(){
         if($this->role->name == "administrator" && $this->is_active == 1){
