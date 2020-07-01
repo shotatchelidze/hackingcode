@@ -23,6 +23,8 @@ class AdminPostsController extends Controller
 		//
 		$posts = Post::all();
 
+		
+
 		return view('admin.posts.index', compact('posts'));
 	}
 
@@ -50,7 +52,8 @@ class AdminPostsController extends Controller
 		//
 		// return $request->all();
 		$input = $request->all();
-
+		// $title = str_slug($request->title, '-');
+		
 		$user = Auth::user();
 
 		if ($file = $request->file('photo_id')) {
@@ -62,7 +65,7 @@ class AdminPostsController extends Controller
 
 			$input['photo_id'] = $photo->id;
 		}
-
+		
 		//add user_id in post table and create post
 		$user->posts()->create($input);
 
@@ -143,8 +146,8 @@ class AdminPostsController extends Controller
 		return redirect('/admin/posts');
 	}
 
-	public function post($id){
-		$post = Post::findOrFail($id);
+	public function post($slug){
+		$post = Post::findBySlugOrFail($slug);
 
 		$comments = $post->comments()->whereIsActive(1)->get();
 
