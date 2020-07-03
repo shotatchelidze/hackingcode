@@ -2,6 +2,8 @@
 
 use Collective\Html\FormFacade;
 use Collective\Html\HtmlFacade;
+// use Illuminate\Support\ServiceProvider;
+// use Carbon\Laravel\ServiceProvider;
 use Collective\Html\HtmlServiceProvider;
 
 return [
@@ -152,8 +154,12 @@ return [
         Illuminate\Validation\ValidationServiceProvider::class,
         Illuminate\View\ViewServiceProvider::class,
         Collective\Html\HtmlServiceProvider::class,
-        Cviebrock\EloquentSluggable\SluggableServiceProvider::class,
+        // Cviebrock\EloquentSluggable\SluggableServiceProvider::class,
+        Cviebrock\EloquentSluggable\ServiceProvider::class,
 
+        UniSharp\LaravelFilemanager\LaravelFilemanagerServiceProvider::class,
+        Intervention\Image\ImageServiceProvider::class,
+        
         /*
          * Application Service Providers...
          */
@@ -161,6 +167,13 @@ return [
         App\Providers\AuthServiceProvider::class,
         App\Providers\EventServiceProvider::class,
         App\Providers\RouteServiceProvider::class,
+       
+        
+        
+
+
+
+
 
     ],
 
@@ -209,6 +222,10 @@ return [
         'View' => Illuminate\Support\Facades\View::class,
         'Form' => Collective\Html\FormFacade::class,
         'Html' => Collective\Html\HtmlFacade::class,
+        'Image' => Intervention\Image\Facades\Image::class
+
+
+
 
     ],
 

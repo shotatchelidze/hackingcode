@@ -3,11 +3,13 @@
 
 @section('content')
 
+@include('includes.tinyeditor')
+
 <h1>Edit Posts</h1>
 <div class="row">
 
     <div class="col-sm-3">
-        <img src="{{ $post->photo->getFile($post->photo->file) }}" alt="" class="responsive">
+        <img src="{{ $post->photo ? $post->photo->getFile($post->photo->file) : $post->photoPlaceholder() }}" alt="" class="responsive">
 
     </div>
 

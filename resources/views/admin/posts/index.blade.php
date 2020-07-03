@@ -21,6 +21,7 @@
         </tr>
     </thead>
     <tbody>
+        
         @if($posts)
 
         @foreach($posts as $post)
@@ -37,8 +38,18 @@
             <td>{{ $post->updated_at->diffForHumans() }}</td>
         </tr>
         @endforeach
+        
         @endif
     </tbody>
 </table>
+
+    <div class="row">
+        <div class="col-sm-6 col-sm-offset-5">
+            {{ $posts->links() }}
+
+        </div>
+    </div>
+
+
 
 @endsection
